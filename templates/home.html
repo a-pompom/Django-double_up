@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Double Up</title>
+</head>
+
+<body>
+    
+    <form action="double_up/" method="post">
+         {% csrf_token %}
+
+         {{ status.current }}
+
+    </form>
+
+</body>
+</html>
