@@ -11,7 +11,26 @@
 
          {{ status.current }}
 
+         {% if status.target == 0 %}
+             <p> ? </p>
+         {% else %}
+             <p>{{ status.target }}</p>
+
+         {% endif %}
+
+         {% if not result_message %}
+              <input type="submit" formaction="{% url 'home' 'High'  %}" value="High">
+
+             <input type="submit" formaction="{% url 'home' 'Low'  %}" value="Low">
+         {% endif %}
     </form>
+
+    {% if result_message %}
+        <h3>{{ result_message }}</h3>
+
+        <a href="{% url 'home' %}">Retry</a>
+
+    {% endif %}
 
 </body>
 </html>

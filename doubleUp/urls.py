@@ -21,4 +21,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('user/', include('django.contrib.auth.urls')), # 認証関連のViewをURLディスパッチャへ認識させる
     path('double_up/', include('game.urls')),
+
 ]
