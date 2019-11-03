@@ -3,6 +3,8 @@
 Double Up
 {% endblock title %}
 
+{% load filter %}
+
     
 {% block content %}
     <div class="home">
@@ -13,7 +15,7 @@ Double Up
             </div>
 
             <div class="home-header__message">
-                <h3>{{ status.doubleUpCount }} times</h3>
+                <h3>{{ status.double_up_count|get_count }} times</h3>
 
 
                 {% if result_message %}
@@ -39,7 +41,7 @@ Double Up
                          </p>
 
                          <p class="card__mark">
-                             ♡
+                             {{ status.current_mark|get_mark }}
                          </p>
 
                          <p class="card__reverse-text">
@@ -57,7 +59,7 @@ Double Up
                              </p>
 
                              <p class="card__mark">
-                                 ?
+                                 {{ status.target_mark|get_mark }}
                              </p>
 
                              <p class="card__reverse-text">
