@@ -39,8 +39,8 @@ class GameView(View):
             home画面へ遷移し、ゲームの状態を保持するオブジェクトをコンテキストとして保持
         """
 
-        service = DoubleUpService()
-        game_status = service.init_game_state(request.user.id)
+        service = DoubleUpService(request.user.id)
+        game_status = service.init_game_state()
 
         return render(request, 'home.html', {'status': game_status})
 
@@ -64,8 +64,8 @@ class GameView(View):
             home画面へ遷移し、結果を表示するためのコンテキストを保持
         """
 
-        service = DoubleUpService()
-        game_status = service.update_target(request.user.id)
+        service = DoubleUpService(request.user.id)
+        game_status = service.update_target()
 
         result_message = service.compare_user_selected(selected)
 

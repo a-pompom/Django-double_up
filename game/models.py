@@ -13,8 +13,17 @@ class GameStatus(models.Model):
     )
 
     # 画面に初期値として表示される数値
-    current = models.IntegerField()
+    current = models.IntegerField(default = 0)
 
     # ユーザが選択したHighまたはLowについて、currentと比較する対象
-    target = models.IntegerField()
+    target = models.IntegerField(default = 0)
+
+    # ダブルアップが何回連続で成功したか
+    doubleUpCount = models.IntegerField(default = 0)
+
+    # ユーザが保持しているコイン
+    coin = models.IntegerField(default = 1000)
+
+    # ゲーム単位で獲得したコイン
+    gainedCoin = models.IntegerField(default = 0)
     
