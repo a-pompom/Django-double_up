@@ -1,0 +1,38 @@
+@import "./base";
+@import "./mixin";
+
+@import "./simpleModule/button";
+
+$breakpoints: (
+	'sp': 'screen and (max-width: 559px)',
+	'tb': 'screen and (min-width: 559px) and (max-width: 959px)',
+	'pc': 'screen and (min-width: 959px)',
+	'sp-tb': 'screen and (max-width: 959px)',
+	'tb-pc': 'screen and (min-width: 559px)',
+) !default;
+
+// レスポンシブ用
+// pc パソコン
+// sp スマートフォン
+// tb タブレット
+// pc-tbの場合、スマートフォンのみ非表示となる
+@include responsive(sp) {
+	.tb { display:none !important;}
+	.pc-tb { display:none !important;}
+	.pc { display:none !important;}
+}
+@include responsive(tb) {
+	.sp { display:none !important;}
+	.sp-pc { display:none !important;}
+	.pc { display:none !important;}
+}
+@include responsive(pc) {
+	.sp { display:none !important;}
+	.tb { display:none !important;}
+	.sp-tb { display:none !important;}
+}
+
+
+@import "./layout/doubleUp";
+@import "./modules/card";
+@import "./modules/homeModule";

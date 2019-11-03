@@ -1,36 +1,106 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>Double Up</title>
-</head>
+{% extends 'base.html' %}
+{% block title %}
+Double Up
+{% endblock title %}
 
-<body>
     
-    <form action="double_up/" method="post">
-         {% csrf_token %}
+{% block content %}
+    <div class="home">
 
-         {{ status.current }}
+        <header class="home-header">
+            <div class="home-header__title">
+                <h2>Double UP</h2>
+            </div>
 
-         {% if status.target == 0 %}
-             <p> ? </p>
-         {% else %}
-             <p>{{ status.target }}</p>
+            <div class="home-header__message">
+                <h3>1 times</h3>
 
-         {% endif %}
 
-         {% if not result_message %}
-              <input type="submit" formaction="{% url 'home' 'High'  %}" value="High">
+                {% if result_message %}
+                    <h3>{{ result_message }}</h3>
+                {% else %}
+                    <h3>
+                        Select High Or Low
+                    </h3>
+                {% endif %}
 
-             <input type="submit" formaction="{% url 'home' 'Low'  %}" value="Low">
-         {% endif %}
-    </form>
+            </div>
 
-    {% if result_message %}
-        <h3>{{ result_message }}</h3>
+        </header>
 
-        <a href="{% url 'home' %}">Retry</a>
+        <div class="cards">
+            <form action="double_up/" method="post">
+                 {% csrf_token %}
 
-    {% endif %}
+                 <ul class="card-list">
+                     <li class="card-list__item card">
+                         <p class="card__text">
+                             {{ status.current }}
+                         </p>
 
-</body>
-</html>
+                         <p class="card__mark">
+                             ♡
+                         </p>
+
+                         <p class="card__reverse-text">
+                             {{ status.current }}
+                         </p>
+                     </li>
+
+                     <li class="card-list__item card">
+                             <p class="card__text">
+                                 {% if status.target == 0 %}
+                                      ?
+                                 {% else %}
+                                     <p>{{ status.target }}</p>
+                                 {% endif %}
+                             </p>
+
+                             <p class="card__mark">
+                                 ?
+                             </p>
+
+                             <p class="card__reverse-text">
+                                 {% if status.target == 0 %}
+                                      ?
+                                 {% else %}
+                                     {{ status.target }}
+                                 {% endif %}
+                             </p>
+                     </li>
+
+                 </ul>
+
+                 {% if not result_message %}
+                     <ul class="select-list">
+                         <li class="select-list__item">
+                             <input 
+                                 type="submit" 
+                                 formaction="{% url 'home' 'High'  %}" 
+                                 value="High"
+                                 class="select-button button--high">
+                         </li>
+                         <li class="select-list__item">
+                             <input 
+                                 type="submit" 
+                                 formaction="{% url 'home' 'Low'  %}" 
+                                 value="Low"
+                                 class="select-button button--low">
+                         </li>
+                     </ul>
+
+                 {% endif %}
+            </form>
+        </div>
+
+        {% if result_message %}
+
+            <a href="{% url 'home' %}">
+                <h3 class="message-retry">Retry</h3>
+            </a>
+            
+
+        {% endif %}
+    </div>
+
+{% endblock content %}

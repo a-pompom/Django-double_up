@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'game.apps.GameConfig',
-    'game_poker.app.GamePokerConfig',
+    'game_poker.apps.GamePokerConfig',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,12 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 WSGI_APPLICATION = 'doubleUp.wsgi.application'
