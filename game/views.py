@@ -13,13 +13,10 @@ class GameView(View):
 
     Attributes
     ----------
-    model : Model
-       ダブルアップの状態を管理するEntity
     template_name : str
         レンダリング対象のテンプレート名
     """
 
-    model = GameStatus
     template_name = 'home.html'
     
     def get(self, request):

@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # ログイン・ログアウト時の遷移先
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'poker'
 LOGOUT_REDIRECT_URL = 'home'
 
 # 認証に利用するカスタムユーザモデル

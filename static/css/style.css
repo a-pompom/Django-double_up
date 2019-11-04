@@ -30,16 +30,16 @@ a {
   a:checked {
     color: #4d464f; }
 
-.select-list__item .select-button {
+.select-button {
   position: relative;
   display: inline-block;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer; }
 
-.select-list__item .select-button {
+.select-button {
   transition: .4s; }
-  .select-list__item .select-button:hover {
+  .select-button:hover {
     color: #fff; }
 
 @media screen and (max-width: 559px) {
@@ -70,8 +70,8 @@ a {
   .sp-tb {
     display: none !important; } }
 .home {
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 90%;
   border: 1px solid #000;
   border-radius: 3%;
   margin: 30px auto; }
@@ -90,7 +90,10 @@ a {
     .home .cards .card-list__item {
       width: 100px;
       height: 180px;
-      margin: 10px 10%; }
+      margin: 10px 30px; }
+  .home .hold-list {
+    text-align: center;
+    margin: 40px auto; }
 
 .card {
   position: relative;
@@ -112,24 +115,78 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between; }
-  .select-list__item .select-button {
-    width: 120px;
-    height: 40px;
-    font-size: 1.4rem;
-    background-color: #F4F3F6;
-    margin: 10px 30px; }
-  .select-list__item .button--high {
-    color: #CB72AA; }
-    .select-list__item .button--high:hover {
-      background-color: #CB72AA; }
-  .select-list__item .button--low {
-    color: #4893C6; }
-    .select-list__item .button--low:hover {
-      background-color: #4893C6; }
 
 .message-retry {
   text-align: center;
   font-size: 1.5rem;
   text-decoration: underline; }
+
+.hold-text {
+  width: 60px;
+  height: 35px;
+  font-size: 1.4rem;
+  border: 1px solid #000;
+  padding: 3px;
+  margin: 10px 55px;
+  cursor: pointer; }
+  .hold-text:hover {
+    background-color: rgba(0, 0, 0, 0.2); }
+
+#hold1 {
+  display: none; }
+
+#hold1:checked + .hold-text {
+  color: #FFF;
+  background-color: #3B404E; }
+
+#hold2 {
+  display: none; }
+
+#hold2:checked + .hold-text {
+  color: #FFF;
+  background-color: #3B404E; }
+
+#hold3 {
+  display: none; }
+
+#hold3:checked + .hold-text {
+  color: #FFF;
+  background-color: #3B404E; }
+
+#hold4 {
+  display: none; }
+
+#hold4:checked + .hold-text {
+  color: #FFF;
+  background-color: #3B404E; }
+
+#hold5 {
+  display: none; }
+
+#hold5:checked + .hold-text {
+  color: #FFF;
+  background-color: #3B404E; }
+
+.select-button {
+  width: 120px;
+  height: 40px;
+  font-size: 1.4rem;
+  background-color: #F4F3F6;
+  margin: 10px 30px; }
+
+.button--high {
+  color: #CB72AA; }
+  .button--high:hover {
+    background-color: #CB72AA; }
+
+.button--low {
+  color: #4893C6; }
+  .button--low:hover {
+    background-color: #4893C6; }
+
+.button--ok {
+  color: #D3ECF3; }
+  .button--ok:hover {
+    background-color: #D3ECF3; }
 
 /*# sourceMappingURL=style.css.map */

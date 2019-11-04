@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+Poker
+{% endblock title %}
+{% load filter %}
+
+{% block content %}
+    <div class="home">
+
+        <header class="home-header">
+            <div class="home-header__title">
+                <h2>Poker</h2>
+            </div>
+
+            <div class="home-header__message">
+                <h3>Select cards</h3>
+            </div>
+
+        </header>
+
+        <div class="cards">
+
+            <form action="#" method="post">
+                 {% csrf_token %}
+
+                 <ul class="card-list">
+
+                     {% for card in cards %}
+                         <li class="card-list__item card">
+                             <p class="card__text">
+                                 {{ card.card_number }}
+                             </p>
+
+                             <p class="card__mark">
+                                 {{ card.card_mark|get_mark }}
+                             </p>
+
+                             <p class="card__reverse-text">
+                                 {{ card.card_number }}
+                             </p>
+                         </li>
+                     {% endfor %}
+                 </ul>
+
+                 <div class="hold-list">
+                     <input type="checkbox" id="hold1" name="holds" value="1">
+                     <label for="hold1" class="hold-text">Hold</label>
+
+                     <input type="checkbox" id="hold2" name="holds" value="2">
+                     <label for="hold2" class="hold-text">Hold</label>
+                     <input type="checkbox" id="hold3" name="holds" value="3">
+                     <label for="hold3" class="hold-text">Hold</label>
+                     <input type="checkbox" id="hold4" name="holds" value="4">
+                     <label for="hold4" class="hold-text">Hold</label>
+                     <input type="checkbox" id="hold5" name="holds" value="5">
+                     <label for="hold5" class="hold-text">Hold</label>
+
+
+                     <input 
+                         type="submit" 
+                         formaction="{% url 'poker'  %}" 
+                         value="OK"
+                         class="select-button button--ok">
+                 </div>
+                 
+
+            </form>
+        </div>
+
+    </div>
+
+{% endblock content %}
