@@ -13,7 +13,13 @@ Poker
             </div>
 
             <div class="home-header__message">
-                <h3>Select cards</h3>
+                {% if hand %}
+                    <h3>{{ hand }}</h3>
+                {% else %}
+                    <h3>
+                        Select cards
+                    </h3>
+                {% endif %}
             </div>
 
         </header>
@@ -42,26 +48,34 @@ Poker
                      {% endfor %}
                  </ul>
 
-                 <div class="hold-list">
-                     <input type="checkbox" id="hold1" name="holds" value="1">
-                     <label for="hold1" class="hold-text">Hold</label>
+                {% if hand %}
+                    <a href="{% url 'poker' %}">
+                        <h3 class="message-retry">Retry</h3>
+                    </a>
+                </div>
 
-                     <input type="checkbox" id="hold2" name="holds" value="2">
-                     <label for="hold2" class="hold-text">Hold</label>
-                     <input type="checkbox" id="hold3" name="holds" value="3">
-                     <label for="hold3" class="hold-text">Hold</label>
-                     <input type="checkbox" id="hold4" name="holds" value="4">
-                     <label for="hold4" class="hold-text">Hold</label>
-                     <input type="checkbox" id="hold5" name="holds" value="5">
-                     <label for="hold5" class="hold-text">Hold</label>
+                {% else %}
+                     <div class="hold-list">
+                         <input type="checkbox" id="hold1" name="holds" value="1">
+                         <label for="hold1" class="hold-text">Hold</label>
+
+                         <input type="checkbox" id="hold2" name="holds" value="2">
+                         <label for="hold2" class="hold-text">Hold</label>
+                         <input type="checkbox" id="hold3" name="holds" value="3">
+                         <label for="hold3" class="hold-text">Hold</label>
+                         <input type="checkbox" id="hold4" name="holds" value="4">
+                         <label for="hold4" class="hold-text">Hold</label>
+                         <input type="checkbox" id="hold5" name="holds" value="5">
+                         <label for="hold5" class="hold-text">Hold</label>
 
 
-                     <input 
-                         type="submit" 
-                         formaction="{% url 'poker'  %}" 
-                         value="OK"
-                         class="select-button button--ok">
-                 </div>
+                         <input 
+                             type="submit" 
+                             formaction="{% url 'poker'  %}" 
+                             value="OK"
+                             class="select-button button--ok">
+                     </div>
+                {% endif %}
                  
 
             </form>

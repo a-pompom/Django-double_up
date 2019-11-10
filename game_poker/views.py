@@ -5,8 +5,6 @@ from django.views.generic import View
 from .models import Cards
 from .service import PokerService
 
-
-
 class PokerView(View):
     """
     ポーカーの状態を管理するためのクラス
@@ -48,16 +46,11 @@ class PokerView(View):
         return render(request, 'poker.html', context)
 
     def post(self, request):
-        print(request.POST.getlist('holds'))
         service = PokerService(request.user.id)
 
-        cards = service.update_cards(request.POST.getlist('holds'))
-        service.exists_poker_hand()
+        cards = service.update_unholded_cards(request.POST.getlist('holds'))
+        hand = service.exists_poker_hand()
 
-        context = {'cards': cards}
+        context = {'cards': cards, 'hand': hand}
 
         return render(request, 'poker.html', context)
-
-
-
-
