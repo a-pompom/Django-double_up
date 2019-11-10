@@ -1,4 +1,22 @@
 class Hands:
+    """
+    ポーカーの役を扱うためのクラス
+
+    Attributes
+    ----------
+    sorted_card_numbers : List<int>
+        ソート済みのカードの数値を格納したリスト
+    card_marks : List<int>
+        カードの絵柄を表す数値を格納したリスト
+    pair_count: int
+        ペアが何個存在するか
+    card_same_count: int
+        同じ数値のカードが何枚存在するか
+    has_straight : bool
+        ストレートが成り立つか
+    has_flash : bool
+        フラッシュが成り立つか
+    """
     
     def __init__(self, card_numbers, card_marks):
         self.sorted_card_numbers = sorted(card_numbers)
@@ -36,30 +54,27 @@ class Hands:
 
 
     def calc_straight(self):
-        # 5枚のカードの数値の和 = (head + tail) * 3を満たすとき、ストレートが成り立つ
         head = self.sorted_card_numbers[0]
-        tail = self.sorted_card_numbers[len(self.sorted_card_numbers)-1]
-
-        card_number_sum = 0
         for card_number in self.sorted_card_numbers:
-            card_number_sum += card_number
+            if card_number != head:
+                self.has_straight = False
+                return self
 
-        sequential_sum = (head + tail) * 3 - ((head + tail) / 2)
+            head += 1
 
-        if card_number_sum == sequential_sum:
-            self.has_straight = True
+        self.has_straight = True
 
         return self
 
     def calc_flash(self):
         head = self.card_marks[0]
 
-        card_mark_sum = 0
         for mark in self.card_marks:
-            card_mark_sum += mark
+            if mark != head:
+                self.has_flash = False
+                return self
 
-        if card_mark_sum == head * len(self.card_marks):
-            self.has_flash = True
+        self.has_flash = True
 
         return self
 

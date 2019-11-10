@@ -49,7 +49,7 @@ class PokerView(View):
         service = PokerService(request.user.id)
 
         cards = service.update_unholded_cards(request.POST.getlist('holds'))
-        hand = service.exists_poker_hand()
+        hand = service.get_poker_hand()
 
         context = {'cards': cards, 'hand': hand}
 

@@ -8,6 +8,8 @@ class CardHandler:
     ----------
     cards : List<Card>
         ゲームで利用するトランプの集合を扱うためのリスト 
+    uid_list : List<int>
+        トランプのカードの重複を防ぐためのユニークIDを格納したもの
     """
 
     def __init__(self, cards):
