@@ -7,6 +7,6 @@ Djangoの練習がてら、ポーカー・ダブルアップアプリを作成�
 
 ポーカー
 
-![doubleUp](./docs/img/double_up.png)
+![doubleUp](./docs/img/DoubleUp.png)
 
 ダブルアップ
