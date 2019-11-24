@@ -45,9 +45,24 @@ class PokerView(View):
 
         return render(request, 'poker.html', context)
 
+    """
+    POSTリクエストで呼び出される処理
+
+    Parameters
+    ---------- 
+    request : HttpRequest
+        home画面へのHttpRequest
+    
+    Returns
+    -------
+    renderedValue : HttpResponse
+        home画面へ遷移し、ゲームの状態を保持するオブジェクトをコンテキストとして保持
+        
+    """
     def post(self, request):
         service = PokerService(request.user.id)
 
+        # holdされなかったカードを更新し、役判定
         cards = service.update_unholded_cards(request.POST.getlist('holds'))
         hand = service.get_poker_hand()
 
